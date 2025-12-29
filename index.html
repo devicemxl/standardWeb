@@ -1,0 +1,295 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Standard Tooling Co.</title>
+    <script>
+        function checkOrientation() {
+            if (window.innerWidth < window.innerHeight) {
+                // Modo Portrait (Vertical)
+                document.getElementById('landscape-content').style.display = 'none';
+                document.getElementById('portrait-message').style.display = 'flex';
+                alert("Gira tu dispositivo a modo horizontal para ver el contenido.");
+                // Puedes ocultar el contenido aquí con CSS o JS
+            } else {
+                // Modo Landscape (Horizontal)
+                // Muestra el contenido si estaba oculto
+                document.getElementById('landscape-content').style.display = 'flex';
+                document.getElementById('portrait-message').style.display = 'none';
+            }
+        };
+        onload = function () {
+            checkOrientation();
+        };
+        window.addEventListener('resize', function () {
+            checkOrientation();
+        });
+
+    </script>
+    <style>
+        :root {
+            --primary-color: #01446bff;
+            --secondary-color: #0e73a6ff;
+            --dark-color: rgb(0, 39, 61);
+            --dark-color-trans: rgba(217, 237, 244, 0.975);
+            --white: #ffffff;
+            --font-family: 'times new roman', serif;
+            overflow-x: hidden;
+            overflow-y: scroll;
+
+            --pg-margin: min(min(45px, 4.5vw), 4.5vh);
+            --footer-height: max(10.5vh, 150px);
+        }
+
+        /* Estilos para modo landscape (horizontal) */
+        #portrait-message {
+            display: none;
+        }
+
+        #landscape-content {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: stretch;
+            flex-direction: column;
+        }
+
+        #bucket {
+            left: var(--pg-margin);
+            top: var(--pg-margin);
+            padding: 15px;
+            position: absolute;
+            /* ancho y alto restando los márgenes */
+            width: calc(99vw - calc(2 * var(--pg-margin)));
+            /*width: calc(100vw - 2 * min(min(45px, 4.5vw), 4.5vh));*/
+            height: calc(100vh - 2 * var(--pg-margin) - var(--footer-height) - 10px);
+        }
+
+        #nav {
+            font-family: var(--font-family);
+            color: var(--secondary-color);
+            text-align: left;
+            /* ancho restando los márgenes */
+            margin-right: var(--pg-margin);
+            padding: 0;
+            margin: 0;
+            top: 0;
+            left: 0;
+
+
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+
+            position: relative;
+        }
+
+        #banner {
+            position: relative;
+            font-family: var(--font-family);
+            font-size: min(min(48px, 5.5vw), 5.5vh);
+            color: var(--secondary-color);
+            text-align: center;
+            padding: 0;
+            margin: 0;
+
+            margin-left: calc(-1 * var(--pg-margin));
+            /* margen superior de 120px o min(min(30px, 3.5vw), 3.5vh) */
+            margin-top: min(120px, 4vw);
+            /* 
+            centrado verticalmente
+            menos la altura del footer 10.5vh (min 150px) y un margen de 10px 
+            o min(min(45px, 4.5vw), 4.5vh) + 100px desde la parte superior
+            */
+            top: min(calc(50vh - var(--footer-height) - 10px), var(--pg-margin) + 100px);
+            left: 0;
+
+            width: 100vw;
+        }
+
+        #action {
+            position: relative;
+            font-family: var(--font-family);
+            font-size: min(min(32px, 3.5vw), 3.5vh);
+            color: var(--primary-color);
+            text-align: left;
+
+            padding: 0;
+            margin: 0;
+
+            margin-left: calc(-1 * var(--pg-margin));
+            /* margen superior de 20px o min(min(15px, 1.5vw), 1.5vh) */
+            margin-top: min(20px, 5vw);
+            /* 
+            centrado verticalmente
+            menos la altura del footer 10.5vh (min 150px) y un margen de 10px
+            o min(min(45px, 4.5vw), 4.5vh) + 150px desde la parte superior
+            */
+            top: min(calc(50vh - var(--footer-height) - 10px), var(--pg-margin) + 150px);
+            left: 0;
+            text-align: center;
+
+            width: 100vw;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 7.5vh;
+            min-height: 100px;
+
+            padding: 0;
+            margin: 0;
+
+            text-align: center;
+            font-size: min(min(12px, 0.9vw), 1.2vh);
+
+            box-shadow: var(--dark-color-trans) 50vh 50vw 36px -28px inset;
+            background-image: url(./hero.png);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: var(--primary-color);
+
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+        }
+    </style>
+    <style>
+        #action a {
+            text-decoration: none;
+            font-size: min(1.25vh, 12px);
+            letter-spacing: calc(min(1.5vh, 14px) * 0.5);
+        }
+
+        #action a {
+            color: var(--secondary-color);
+        }
+
+        #action a:hover {
+            color: var(--white);
+        }
+
+        .ghost-button {
+            display: inline-block;
+            width: 12.5em;
+            padding: 0.5em;
+            color: var(--secondary-color);
+            border: 0.01hv solid var(--secondary-color);
+            text-align: center;
+            outline: none;
+            text-decoration: none;
+        }
+
+        .ghost-button:hover,
+        .ghost-button:active {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        /*----------  
+        Rounded Corners
+        ----------*/
+
+        .ghost-round {
+            display: inline-block;
+            width: 200px;
+            padding: 8px;
+            color: var(--secondary-color);
+            border: 1px solid var(--secondary-color);
+            border-radius: 20px;
+            text-align: center;
+            outline: none;
+            text-decoration: none;
+        }
+
+        .ghost-round:hover,
+        .ghost-round:active {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        /*----------  
+        Thick Border
+        ----------*/
+
+        .ghost-thick {
+            display: inline-block;
+            width: 200px;
+            padding: 8px;
+            color: var(--secondary-color);
+            border: 1px solid var(--secondary-color);
+            border-radius: 20px;
+            text-align: center;
+            outline: none;
+            text-decoration: none;
+        }
+
+        .ghost-thick:hover,
+        .ghost-thick:active {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        /*----------  
+        Transition (Square corners to rounded corners) 
+        ----------*/
+
+        .ghost-trans {
+            display: inline-block;
+            width: 200px;
+            padding: 8px;
+            color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+            text-align: center;
+            outline: none;
+            text-decoration: none;
+            transition: all .20s ease-in-out;
+        }
+
+        .ghost-trans:hover,
+        .ghost-trans:active {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="portrait-message">
+        landscape, please
+    </div>
+    <div id="landscape-content">
+        <div id="bucket">
+            <div id="nav">
+                <div id="logo">
+                    <img src="logo.png" alt="Standard Tooling Co. Logo" style="height: min(min(40px, 4vw), 4vh);">
+                </div>
+                <div id="navbar">
+                    Home | Products | About Us | Contact
+                </div>
+            </div>
+
+            <div id="banner">
+                <div id="toolbox">
+                    <img src="./hero_prod.png" alt="Pen Image" style="width: max(47.85vw, 300px);" fetchpriority="high">
+                </div>
+            </div>
+            <div id="action">
+                <a class="ghost-thick" href="#">EXPLORE THE<BR>SYSTEM</a>
+            </div>
+        </div>
+        <footer>Standard Tooling Co. © 2025 - All rights reserved.</footer>
+    </div>
+</body>
+
+</html>
