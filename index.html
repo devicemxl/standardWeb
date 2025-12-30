@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Standard Tooling Co.</title>
+    <meta name="description"
+ content="Standard Tooling Co. designs traceable cognitive systems: languages, graphs, and tooling for auditable AI-assisted reasoning.">
+    <meta property="og:title" content="Standard Tooling Co.">
+    <meta property="og:description" content="Form follows cognition. Industrial tooling for traceable AI reasoning.">
+    <meta property="og:image" content="https://standardtooling.com/hero_prod.png">
+
     <script>
         function checkOrientation() {
             if (window.innerWidth < window.innerHeight) {
                 // Modo Portrait (Vertical)
                 document.getElementById('landscape-content').style.display = 'none';
                 document.getElementById('portrait-message').style.display = 'flex';
-                alert("Gira tu dispositivo a modo horizontal para ver el contenido.");
+                //alert("Gira tu dispositivo a modo horizontal para ver el contenido.");
                 // Puedes ocultar el contenido aquí con CSS o JS
             } else {
                 // Modo Landscape (Horizontal)
@@ -52,6 +58,11 @@
             justify-content: center;
             align-items: stretch;
             flex-direction: column;
+        }
+        /* elimina math/js -> browser nativo */
+        @media (orientation: portrait) {
+          #landscape-content { display: none; }
+          #portrait-message { display: flex; }
         }
 
         #bucket {
@@ -261,6 +272,11 @@
             color: var(--white);
             border-radius: 10px;
         }
+        .seo-h1 {
+          position: absolute;
+          top: -9999px;
+          left: -9999px;
+        }
     </style>
 </head>
 
@@ -274,21 +290,32 @@
                 <div id="logo">
                     <img src="logo.png" alt="Standard Tooling Co. Logo" style="height: min(min(40px, 4vw), 4vh);">
                 </div>
-                <div id="navbar">
-                    Home | Products | About Us | Contact
-                </div>
+                    <nav id="navbar" aria-label="Primary navigation">
+                    HOME  |  TRACERAG  |  ST-DESK  |  COGNEU  |  CONTACT US
+                </nav>
             </div>
 
             <div id="banner">
                 <div id="toolbox">
                     <img src="./hero_prod.png" alt="Pen Image" style="width: max(47.85vw, 300px);" fetchpriority="high">
-                </div>
+                    <h1 class="seo-h1">Industrial Cognitive Tooling for Traceable AI Reasoning</h1>
+                    </div>
             </div>
             <div id="action">
                 <a class="ghost-thick" href="#">EXPLORE THE<BR>SYSTEM</a>
             </div>
         </div>
-        <footer>Standard Tooling Co. © 2025 - All rights reserved.</footer>
+        <footer>
+            
+                    <h2 class="seo-title">BEAUTIFUL FORM, PERFECT SOLUTION</h2>
+                    <h3 class="seo-subitle">FORM FOLLOWS COGNITION</h3>
+                    <p class="seo-tagline">
+                    We design languages, graphs, and systems that turn <br>information theory into auditable, <br>human-understandable AI workflows.
+                    </p>
+                    <p class="seo-tagline">
+                    Standard Tooling Co. © 2025 - All rights reserved.
+                    </p>
+        </footer>
     </div>
 </body>
 
